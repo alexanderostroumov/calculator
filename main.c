@@ -25,20 +25,7 @@ void read(){
 void err(){
 	printf("%s","Error! Please enter correct expression!\n");
 }
-void correctinformation(){
-	char s[15] ="0123456789+-*/%";
-	int g=0;
-	int y=0;
-	while(str[g]!='\n'){	
-		int i=0;	
-		while(i<15){	
-			if(str[g]==s[i])y++;
-			i++;
-		}
-		if(y!=1){err(); break;}
-		g++;
-	}
-}
+
 int calculate(int a,int b){
 	if (op==0) return a + b;
 	if (op==1) return a - b;
@@ -81,11 +68,27 @@ void findoperation(){
 	getNumbers(k);
 	
 }
-
+void correctinformation(){
+	char s[10] = "0123456789";
+	int g=0;
+	int y=0;
+	while(g<count){	
+		int i=0;	
+		while(i<10){
+			printf("%s","---------\n");
+			printf("%d",str[g]);	
+			if(str[g]==48+i)y++;
+			i++;
+		}
+		if(y==g) if(str[g]==43 | str[g]==45 | str[g]==42 | str[g]==47 | str[g]==37) y++;
+		if(y!=g+1){err(); break;}
+		g++;
+	}
+}
 
 int main(int argc, char* argv){	
 	read();
-	//correctinformation();
-	findoperation();
+	correctinformation();
+	//findoperation();
 	return 0;
 }
