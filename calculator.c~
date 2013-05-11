@@ -2,5 +2,19 @@
 #include <stdio.h>
 
 void plus(){
-	printf("%s","test makefile");
+	printf("%s","test makefile\n");
+}
+
+void searchoperation(){
+	char s[5] ="+-*/%"; 
+	int i=0;
+	int j = 0;
+	while(i<100){
+		while(j<5){
+			if(str[i]==s[j]){i=101; break;}
+			j++;
+		}
+		i++;
+	}
+printf("%c",s[++j]);
 }

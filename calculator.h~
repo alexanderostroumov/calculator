@@ -1,1 +1,2 @@
-float plus();
+void plus();
+void searchoperation();
