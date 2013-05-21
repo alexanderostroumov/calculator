@@ -13,3 +13,7 @@ $(TARGET).o: $(TARGET).c
 
 clean:
 	rm -rf *.o hello
+install: 
+	cp $(TARGET) /usr/bin
+uninstall:
+	/bin/rm -f /usr/bin/$(TARGET) 
