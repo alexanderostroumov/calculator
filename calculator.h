@@ -1,5 +1,5 @@
 int power(int a,int b);
-void read();
+void rRead(char* st);
 void err();
 float calculate(int a,int b);
 void getNumbers(int k);

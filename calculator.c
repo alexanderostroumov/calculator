@@ -1,6 +1,10 @@
 #include "calculator.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <malloc.h>
+#include <ctype.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 int str[100];
 int c;
 int a=0;
@@ -14,12 +18,15 @@ int power(int a,int b){
 	}
 	return c/a;
 }
-void read(){
+void rRead(char* st){
+	int f = strlen(st);
+	char s[f];
+	sscanf(st, "%s", s);
 	int i=0;
-	while ((c = getchar()) !='\n'){
-		if(c!=' ') {str[i] = c;count++;}
-		i++;
-		}
+	while (i<f){
+		if(s[i]!=' ') {str[i] = s[i];count++;}	
+	i++;
+}
 }
 void err(){
 	printf("%s","Error! Please enter correct expression!\n");
@@ -31,7 +38,7 @@ float calculate(int a,int b){
 	if (op==0) return t + r;
 	if (op==1) return t - r;
 	if (op==2) return t * r;
-	if (op==3) return t / r;
+	if (op==3) if(r==0) err(); else return t / r;
 	if (op==4) return t - (t / r)*r;
 }
 void getNumbers(int k){
@@ -54,7 +61,7 @@ void findoperation(){
 	char s[5]="+-*/%";
 	while(i<5){
 		int g=0;
-		while(str[g]!='\n'){
+		while(g<count){
 			if(str[g]==s[i]){c=1;k=g;break;}
 			g++;
 		}

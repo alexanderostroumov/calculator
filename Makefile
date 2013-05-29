@@ -3,7 +3,7 @@ TARGET=calculator
 all: $(TARGET)
 
 $(TARGET): main.o $(TARGET).o
-	$(CC) main.o $(TARGET).o -o $(TARGET)
+	$(CC) main.o $(TARGET).o -o $(TARGET) -lreadline
 
 main.o: main.c
 	$(CC) -c main.c
